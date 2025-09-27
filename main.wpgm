@@ -1,0 +1,15 @@
+import wollok.game.*
+import Personajes.*
+
+program AventurasDelAventurero{ 
+    game.title("Aventureando") // no esta el titulo definido, aún
+    game.height(103)
+    game.width(151)
+    game.cellSize(10) 
+
+    game.boardGround("BACKGROUND_BASE.png")
+    game.addVisualCharacter(Fin)
+
+    game.start()
+
+}
