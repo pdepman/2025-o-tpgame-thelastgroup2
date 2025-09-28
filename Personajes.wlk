@@ -1,10 +1,11 @@
 import wollok.game.*
 
-object Fin{
+object fin{
     var position = game.at(0,0)
-    var inventario = []
+    const inventario = []
 
-    method imagen() = "fin.png"  
+    method imagen() = 'fin.png'  
+
     method position() = position
     method position(newPosition) {
         position = newPosition 
@@ -16,4 +17,13 @@ object Fin{
         position = position.left(1)
     }
 
+    method agregarAlInventario(objeto) {
+        inventario.add(objeto)
+    }
+
+    method mencionarObjeto(objeto) {
+      game.say(self,objeto.nombre())
+      game.removeVisual(objeto)
+      self.agregarAlInventario(objeto)
+    }
 }
