@@ -2,7 +2,6 @@ import Personajes.*
 import Obstaculos.*
 import wollok.game.*
 
-
 program AventurasDelAventurero{ 
     game.title("Aventureando") // no esta el titulo definido, aún
     game.height(103)

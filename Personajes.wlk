@@ -4,7 +4,7 @@ object fin{
     var position = game.at(0,0)
     const inventario = []
 
-    method imagen() = 'fin.png'  
+    method image() = 'fin.png'  
 
     method position() = position
     method position(newPosition) {
