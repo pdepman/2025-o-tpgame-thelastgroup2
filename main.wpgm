@@ -4,14 +4,15 @@ import wollok.game.*
 
 program AventurasDelAventurero{ 
     game.title("Aventureando") // no esta el titulo definido, aún
-    game.height(103)
-    game.width(151)
+    game.height(50)
+    game.width(75)
     game.cellSize(10) 
 
     game.boardGround("BACKGROUND_BASE.png")
     
     game.addVisualCharacter(fin)
     game.addVisual(muro)
+    game.addVisual(pocion)
     game.addVisual(fogata)
 
     game.start()

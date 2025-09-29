@@ -1,5 +1,5 @@
 object muro {
-    var position = game.at(15,15)   
+    var position = game.at(25,1)   
     method image() = 'muros.png'
     method position() = position
     method position(newPosition) {
@@ -8,7 +8,7 @@ object muro {
 }
 
 object fogata {
-    var position = game.at(1,1)   
+    var position = game.at(50,1)   
     method image() = 'fogata.png'
 
     method position() = position
@@ -19,7 +19,7 @@ object fogata {
 }
 
 object pocion {
-    var position = game.at(35,50)   
+    var position = game.at(15,1)   
     method image() = 'pocion.png'
 
     method position() = position
