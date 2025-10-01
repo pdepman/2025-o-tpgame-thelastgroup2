@@ -2,7 +2,7 @@ import Personajes.*
 import Obstaculos.*
 import wollok.game.*
 
-program AventurasDelAventurero{ 
+program AventurasDelAventurero { 
     game.title("Aventureando") // no esta el titulo definido, aún
     game.height(50)
     game.width(75)
@@ -16,5 +16,22 @@ program AventurasDelAventurero{
     game.addVisual(fogata)
 
     game.start()
+
+    game.onCollideDo(fin, {item => fin.obtenerItem(item)})
+
+        ontick --> ejecuta un bloque en un intervalo (aplica a saltos)
+       
+       // cargar assets:
+        // pasto
+        // matafuego
+        // tijeras
+        // pocion de vida y/o fuerza
+      //game . vissuals in --> comprueba si puedo moverme si no hay obstaculos en la siguiente celda (OPTIMO PARA SALTOS EN DISTINTAS LINEAS)
+        // game . distance --> avisa la distancia entre 2 objetos
+        //APLICAR --> el personaje deba tocar una tecla e interactue con el objeto / obstaculo
+        // APLICAR --> ALGUN CHECKPOINT (QUE COMPLETE UN NIVEL)
+        // GAME . CLEANER (LIMPIA LA PANTALLA)
+        // OBJETOS - DIRECCION 
+        // POLIMORFISMO DIRECCION
 
 }

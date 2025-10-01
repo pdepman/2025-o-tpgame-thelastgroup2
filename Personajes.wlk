@@ -17,13 +17,16 @@ object fin{
         position = position.left(1)
     }
 
-    method agregarAlInventario(objeto) {
-        inventario.add(objeto)
+
+    method obtenerItem(item) {
+      game.say(self, item.nombre())
+      game.removeVisual(item)
+      self.agregarAlInventario(item)
+    }
+    
+    method agregarAlInventario(item) {
+        inventario.add(item)
     }
 
-    method mencionarObjeto(objeto) {
-      game.say(self,objeto.nombre())
-      game.removeVisual(objeto)
-      self.agregarAlInventario(objeto)
-    }
+
 }

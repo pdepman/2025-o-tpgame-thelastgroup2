@@ -1,3 +1,5 @@
+
+// CONVERTIRLAS EN CLASES
 object muro {
     var position = game.at(25,1)   
     method image() = 'muros.png'
