@@ -1,22 +1,37 @@
+import wollok.vm.*
 import wollok.game.*
+object barraVida {
+    var position = game.at(1, 45)
+    var ancho = 10  // ancho máximo de la barra (puede representar 100 de vida)
+    
+    method position() = position
+    method position(newPosition) { position = newPosition }
+    
+    method anchoActual(vida) = ancho * vida / 100   // calcula proporcional al % de vida
 
-object fin{
+    method image() = "barra.png"  // puede ser un rectángulo verde
+}
+
+object fin {
+    var vida = 100
     var position = game.at(0,0)
     const inventario = []
+    var barra = null // ya se que dijeron que no definamos cosas con null pero es muyyy practico. 
 
-    method image() = 'fin.png'  
+    method salud() = vida
+    method salud(evento) {
+		    vida = vida + evento.energia()
+        if (vida > 100) vida = 100
+        if (vida < 0) vida = 0
+        if (barra != null) barra.anchoActual(vida)
+        if (vida == 0) self.morir()
+	}
+    method asignarBarra(b) { barra = b } 
+
+    method image() = "finder.png"
 
     method position() = position
-    method position(newPosition) {
-        position = newPosition 
-    }
-    method moverAlaDerecha(){
-        position = position.right(1)
-    }
-    method moverAlaIzquierda(){
-        position = position.left(1)
-    }
-
+    method position(newPosition) { position = newPosition }
 
     method obtenerItem(item) {
       game.say(self, item.nombre())
@@ -28,5 +43,16 @@ object fin{
         inventario.add(item)
     }
 
-
+    method mover(nuevaPosicion) {
+        self.position(nuevaPosicion)
+    }
+    
+  method morir() {
+        // aca hay que largar un cartel.. nose como ... que diga.. GAME OVER
+        game.addVisual(gameOver) 
+        game.stop()
+    }
+}
+object gameOver{
+    method image() = "gameover.png"
 }

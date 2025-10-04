@@ -17,7 +17,7 @@ object fogata {
     method position(newPosition) {
         position = newPosition 
     }
-  
+  method energia() = -30
 }
 
 object pocion {
@@ -28,4 +28,5 @@ object pocion {
     method position(newPosition) {
         position = newPosition 
     }
+    method energia() = +20
 }

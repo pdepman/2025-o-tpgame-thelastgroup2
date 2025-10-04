@@ -12,14 +12,16 @@ program AventurasDelAventurero {
     
     game.addVisualCharacter(fin)
     game.addVisual(muro)
-    game.addVisual(pocion)
+    game.addVisual(pocion) 
     game.addVisual(fogata)
+    game.addVisual(barraVida)
+    
 
     game.start()
 
     game.onCollideDo(fin, {item => fin.obtenerItem(item)})
 
-        ontick --> ejecuta un bloque en un intervalo (aplica a saltos)
+      //  ontick --> ejecuta un bloque en un intervalo (aplica a saltos)
        
        // cargar assets:
         // pasto
@@ -33,5 +35,4 @@ program AventurasDelAventurero {
         // GAME . CLEANER (LIMPIA LA PANTALLA)
         // OBJETOS - DIRECCION 
         // POLIMORFISMO DIRECCION
-
 }
