@@ -14,6 +14,8 @@ program AventurasDelAventurero {
     game.addVisual(muro)
     game.addVisual(pocion) 
     game.addVisual(fogata)
+    game.addVisual(herramienta)
+    game.addVisual(final)
     game.addVisual(barraVida)
     
 

@@ -34,17 +34,18 @@ object fin {
     method position() = position
     method position(newPosition) { position = newPosition }
 
-method obtenerItem(item) {
+method obtenerItem(item) { //vscode menciona que ... use polimorfismo..
     if (item == pocion) {
         self.salud(item)
         game.say(self, "Agarraste una poción! Vida: " + vida)
-        game.removeVisual(item)
+        item.desaparecer()
     } 
-    else if (item == herramienta) {
+    else if (item == herramienta) { 
         // falta definir objeto herramienta... puede ser un matafuegos. 
         inventario.add(item)
         game.say(self, "Agarraste una herramienta")
         game.removeVisual(item)
+         item.desaparecer()
     }
 }
     method mover(nuevaPosicion) {
