@@ -1,4 +1,5 @@
 import wollok.vm.*
+import Obstaculos.*  //preguntar al profe, me parece malisimo
 import wollok.game.*
 object barraVida {
     var position = game.at(1, 45)
@@ -33,22 +34,24 @@ object fin {
     method position() = position
     method position(newPosition) { position = newPosition }
 
-    method obtenerItem(item) {
-      game.say(self, item.nombre())
-      game.removeVisual(item)
-      self.agregarAlInventario(item)
-    }
-    
-    method agregarAlInventario(item) {
+method obtenerItem(item) {
+    if (item == pocion) {
+        self.salud(item)
+        game.say(self, "Agarraste una poción! Vida: " + vida)
+        game.removeVisual(item)
+    } 
+    else if (item == herramienta) {
+        // falta definir objeto herramienta... puede ser un matafuegos. 
         inventario.add(item)
+        game.say(self, "Agarraste una herramienta")
+        game.removeVisual(item)
     }
-
+}
     method mover(nuevaPosicion) {
         self.position(nuevaPosicion)
     }
     
   method morir() {
-        // aca hay que largar un cartel.. nose como ... que diga.. GAME OVER
         game.addVisual(gameOver) 
         game.stop()
     }
