@@ -30,14 +30,20 @@ class Pocion { // Se implementa una clase de pociones, por si definimos en un fu
   var position = game.at(posX, posY)
 
   method image() = tipo + '.png'
-  method desaparecer() { game.removeVisual(self) }
+
+  method position() = position  
+  method position(newPosition) { position = newPosition }  
+
+  method desaparecer() { 
+    game.removeVisual(self) 
+    }
 
   method aplicarEfecto(personaje) {
     if (tipo == "pocionVida") {
       personaje.vida(self)
       
     }
-    else if (tipo == "pocionVelocidad") { // 
+    else if (tipo == "pocionVelocidad") { // esto si en un futuro se desea aplicar
       personaje.aumentarVelocidad(cantidad)
     }
     self.desaparecer()
@@ -45,7 +51,7 @@ class Pocion { // Se implementa una clase de pociones, por si definimos en un fu
 
   method energia() = cantidad
 }
-
+const pocionVida = new Pocion (tipo = "pocionVida", cantidad = 25, posX =15, posY=1)
 
 
 object herramienta {   //aca entra clases, las herramientas pueden ser una clase, y asi tener distintas herramientas

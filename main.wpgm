@@ -12,12 +12,18 @@ program AventurasDelAventurero {
     
     game.addVisualCharacter(fin)
     game.addVisual(muro)
-    game.addVisual(pocion) 
+    game.addVisual(pocionVida) 
     game.addVisual(fogata)
     game.addVisual(herramienta)
     game.addVisual(final)
     game.addVisual(barraVida)
     
+
+    //  movimiento
+    keyboard.left().onPressDo({ fin.moverIzquierda() })
+    keyboard.right().onPressDo({ fin.moverDerecha() })
+    keyboard.up().onPressDo({ fin.moverArriba() }) // quiza hay que re-modicar debido a que se añadirá saltos
+    keyboard.down().onPressDo({ fin.moverAbajo() }) // quiza hay que re-modicar debido a que se añadirá saltos
 
     game.start()
 
