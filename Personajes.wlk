@@ -18,7 +18,7 @@ object fin {
     var position = game.at(0,0)
     const inventario = []
     var barra = null // ya se que dijeron que no definamos cosas con null pero es muyyy practico. 
-    var direccion = "derecha"  // ✅ Nueva variable para dirección
+    var direccion = "derecha" 
 
     method vida() = vida
     method vida(evento) {
@@ -69,7 +69,7 @@ object fin {
         game.say(self, "Agarraste una poción! Vida: " + vida)
         item.desaparecer()
     } 
-    
+
     else if (item == herramienta) { 
         // falta definir objeto herramienta... puede ser un matafuegos. 
         inventario.add(item)
