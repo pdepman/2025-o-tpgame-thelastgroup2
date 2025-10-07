@@ -19,8 +19,8 @@ object fin {
     const inventario = []
     var barra = null // ya se que dijeron que no definamos cosas con null pero es muyyy practico. 
 
-    method salud() = vida
-    method salud(evento) {
+    method vida() = vida
+    method vida(evento) {
 		    vida = vida + evento.energia()
         if (vida > 100) vida = 100
         if (vida < 0) vida = 0
@@ -33,10 +33,10 @@ object fin {
 
     method position() = position
     method position(newPosition) { position = newPosition }
-
-method obtenerItem(item) { //vscode menciona que ... use polimorfismo..
+    
+    method obtenerItem(item) {
     if (item == pocion) {
-        self.salud(item)
+        self.vida(item)
         game.say(self, "Agarraste una poción! Vida: " + vida)
         item.desaparecer()
     } 
