@@ -1,22 +1,29 @@
 import Personajes.*
 import Obstaculos.*
+import camara.*
 import wollok.game.*
 
 program AventurasDelAventurero { 
     game.title("Aventureando") // no esta el titulo definido, aún
     game.height(50)
-    game.width(75)
+    game.width(90)
     game.cellSize(10) 
 
-    game.boardGround("BACKGROUND_BASE.png")
+    
+    
+    
+    game.addVisual(fondoJuego) // se implementa al fondo como una imagen no estatica para el side scrolling
     
     game.addVisualCharacter(fin)
     game.addVisual(muro)
     game.addVisual(pocionVida) 
     game.addVisual(fogata)
-    game.addVisual(herramienta)
+    game.addVisual(matafuegos)
     game.addVisual(final)
     game.addVisual(barraVida)
+    
+    // Inicializar posiciones de objetos según la cámara
+    camara.actualizarPosicionObjetos()
     
 
     //  movimiento

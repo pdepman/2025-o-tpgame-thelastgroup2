@@ -7,6 +7,8 @@ class Obstaculo { // se implementan clases de los obstaculos
     const posX
     const posY 
     var position = game.at(posX, posY)
+    const posicionOriginal = game.at(posX, posY)  // guardamos la posición original a efectos de uso de camara
+    
     method image() = nombreObstaculo +'.png'
 
     method position() = position 
@@ -14,6 +16,12 @@ class Obstaculo { // se implementan clases de los obstaculos
         position = newPosition
     }
     method energia() = -danio 
+    
+    // Actualiza la posición según el offset/desplazamiento de la cámara
+    method actualizarPorCamara(offsetX) {
+        const nuevaX = posicionOriginal.x() - offsetX
+        position = game.at(nuevaX, posicionOriginal.y())
+    }
 }
 // instanciacion de los obstaculos (clase)
 const muro = new Obstaculo(nombreObstaculo = "muros", danio = 0, posX = 25, posY = 1)
@@ -28,6 +36,7 @@ class Pocion { // Se implementa una clase de pociones, por si definimos en un fu
   const posX
   const posY
   var position = game.at(posX, posY)
+  const posicionOriginal = game.at(posX, posY)  // guardamos la posición original para cálculos de cámara
 
   method image() = tipo + '.png'
 
@@ -50,24 +59,46 @@ class Pocion { // Se implementa una clase de pociones, por si definimos en un fu
   }
 
   method energia() = cantidad
+  
+  // Actualiza la posición según el offset/desplazamiento de la cámara
+  method actualizarPorCamara(offsetX) {
+    const nuevaX = posicionOriginal.x() - offsetX
+    position = game.at(nuevaX, posicionOriginal.y())
+  }
 }
 const pocionVida = new Pocion (tipo = "pocionVida", cantidad = 25, posX =15, posY=1)
 
+class herramienta{ // se implementa una clase herramienta
+  const nombreHerramienta
+    const posX
+    const posY 
+    var position = game.at(posX, posY)
+    const posicionOriginal = game.at(posX, posY)  // guardamos la posición original para cálculos de cámara
+    
+    method image() = nombreHerramienta +'.png'
 
-object herramienta {   //aca entra clases, las herramientas pueden ser una clase, y asi tener distintas herramientas
-//pero aun no domino clases, asique queda para mas adelante 
-    var position = game.at(36,1)   
-    method image() = 'matafuegos.png' // si esto es una clase, la imagen tendria que ser nula o vacia y 
-    //cambiar la imagen segun la instancia del objeto... o algo asi
-
-    method position() = position
-    method position(newPosition) {
-        position = newPosition 
+    method position() = position 
+    method position (newPosition) {
+        position = newPosition
     }
-  //aca quizas agregar un methodo que elimine la fogata al usar la herramienta.
+
+    method actualizarPorCamara(offsetX) {
+        const nuevaX = posicionOriginal.x() - offsetX
+        position = game.at(nuevaX, posicionOriginal.y())
+    }
 }
+const matafuegos = new herramienta(nombreHerramienta = "matafuegos", posX = 25, posY = 1)
+
+
 object final {
-  var position = game.at(70,1)   
+    var position = game.at(70,1)   
+    const posicionOriginal = game.at(70,1) 
     method image() = 'final.png'
     method position() = position
+    
+    
+    method actualizarPorCamara(offsetX) {
+        const nuevaX = posicionOriginal.x() - offsetX
+        position = game.at(nuevaX, posicionOriginal.y())
+    }
 }

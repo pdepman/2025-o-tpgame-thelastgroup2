@@ -1,9 +1,10 @@
 import wollok.vm.*
 import Obstaculos.*  //preguntar al profe, me parece malisimo
 import wollok.game.*
+import camara.*  // Importamos el nuevo archivo de cámara
 object barraVida {
     var position = game.at(1, 45)
-    var ancho = 10  // ancho máximo de la barra (puede representar 100 de vida)
+    const ancho = 10  // ancho máximo de la barra (puede representar 100 de vida)
     
     method position() = position
     method position(newPosition) { position = newPosition }
@@ -19,7 +20,9 @@ object fin {
     const inventario = []
     var barra = null // ya se que dijeron que no definamos cosas con null pero es muyyy practico. 
     var direccion = "derecha" 
+    
 
+    
     method vida() = vida
     method vida(evento) {
 		    vida = vida + evento.energia()
@@ -35,15 +38,29 @@ object fin {
     
     // metodos de movimiento
     method moverIzquierda() {
-        if (position.x() > 0) {
-            direccion = "izquierda"
+        direccion = "izquierda"
+        
+        
+        // Si el personaje está en la zona central y la cámara puede moverse hacia la izquierda
+        if (position.x() <= camara.zonaActivacion() && camara.offsetX() > 0) {
+            
+            camara.moverIzquierda()
+        } else if (position.x() > 0) {
+            
             position = position.left(1)
         }
     }
     
     method moverDerecha() {
-        if (position.x() < game.width() - 1) {
-            direccion = "derecha"
+        direccion = "derecha"
+        
+        
+        // Si el personaje está en la zona central y la cámara puede moverse hacia la derecha
+        if (position.x() >= camara.margenDerecho() && camara.offsetX() < (camara.anchoMundo() - game.width())) {
+            
+            camara.moverDerecha()
+        } else if (position.x() < game.width() - 1) {
+            
             position = position.right(1)
         }
     }
