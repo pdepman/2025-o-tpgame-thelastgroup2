@@ -31,5 +31,5 @@ class Herramienta{ // se implementa una clase herramienta
     }
 
 }
-const matafuegos = new Herramienta(nombreHerramienta = "matafuegos", posX= 3, posY=1,idleFrames=["matafuegos.png", "matafuegos2.png"])
-const tijeras = new Herramienta(nombreHerramienta = "tijeras", posX= 6, posY=-2,idleFrames=["tijeras.png", "tijeras2.png"])
+const matafuegos = new Herramienta(nombreHerramienta = "matafuegos", posX= 30, posY=1,idleFrames=["matafuegos.png", "matafuegos2.png"])
+const tijeras = new Herramienta(nombreHerramienta = "tijeras", posX= 40, posY=-2,idleFrames=["tijeras.png", "tijeras2.png"])
