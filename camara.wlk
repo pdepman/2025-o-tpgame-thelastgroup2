@@ -64,7 +64,9 @@ object camara {
         pasto.actualizarPorCamara(offsetX)
         pocionVida.actualizarPorCamara(offsetX)
         matafuegos.actualizarPorCamara(offsetX)
+        tijeras.actualizarPorCamara(offsetX)
         final.actualizarPorCamara(offsetX)
+
     }
     
     // se obtiene la posicion real fuera del offset de la camara

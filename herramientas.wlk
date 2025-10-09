@@ -1,12 +1,15 @@
 
-class herramienta{ // se implementa una clase herramienta
+class Herramienta{ // se implementa una clase herramienta
   const nombreHerramienta
     const posX
     const posY 
     var position = game.at(posX, posY)
     const posicionOriginal = game.at(posX, posY)  // guardamos la posición original para cálculos de cámara
-    
-    method image() = nombreHerramienta +'.png'
+    // atributos de imagen para el efecto visual (sprite)
+    const idleFrames
+    var image = idleFrames.head()
+    var frameActual = 0
+    method image() = image
 
     method position() = position 
     method position (newPosition) {
@@ -17,5 +20,16 @@ class herramienta{ // se implementa una clase herramienta
         const nuevaX = posicionOriginal.x() - offsetX
         position = game.at(nuevaX, posicionOriginal.y())
     }
+
+    method activarIdle(){
+      game.onTick(500, "idle"+nombreHerramienta, {self.idleAnimation()})
+    }
+    method idleAnimation(){
+      image = idleFrames.get(frameActual % idleFrames.size())
+      frameActual +=1
+      
+    }
+
 }
-const matafuegos = new herramienta(nombreHerramienta = "matafuegos", posX = 25, posY = 1)
+const matafuegos = new Herramienta(nombreHerramienta = "matafuegos", posX= 3, posY=1,idleFrames=["matafuegos.png", "matafuegos2.png"])
+const tijeras = new Herramienta(nombreHerramienta = "tijeras", posX= 6, posY=-2,idleFrames=["tijeras.png", "tijeras2.png"])

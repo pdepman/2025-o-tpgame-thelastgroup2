@@ -27,7 +27,10 @@ program AventurasDelAventurero {
     game.addVisual(pasto)
     pasto.activarIdle()
     game.addVisual(matafuegos)  
+    matafuegos.activarIdle()
     game.addVisual(final)
+    game.addVisual(tijeras)
+    tijeras.activarIdle()
     game.addVisual(barraVida)
     
     // Inicializar posiciones de objetos según la cámara

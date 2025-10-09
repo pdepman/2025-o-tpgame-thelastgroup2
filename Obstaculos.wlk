@@ -34,7 +34,7 @@ class Obstaculo { // se implementan clases de los obstaculos
     }
 }
 // instanciacion de los obstaculos (clase)
-const fogata = new Obstaculo(nombreObstaculo = "fogata", danio = 0, posX = 25, posY = 1, idleFrames = ["fogata.png", "fuego.png"])
-const pasto = new Obstaculo(nombreObstaculo = "pasto", danio= 0, posX =28, posY =1, idleFrames = ["pasto.png", "pasto2.png"])
+const fogata = new Obstaculo(nombreObstaculo = "fogata", danio = 0, posX = 25, posY = 0, idleFrames = ["fogata.png", "fuego.png"])
+const pasto = new Obstaculo(nombreObstaculo = "pasto", danio= 0, posX =40, posY =1, idleFrames = ["pasto.png", "pasto2.png"])
 
 
