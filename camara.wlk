@@ -1,5 +1,9 @@
 import wollok.game.*
 import Obstaculos.*
+import pociones.*
+import herramientas.*
+import checkpoints.*
+
 
 object fondoJuego {
     var position = game.at(0, 0)
@@ -55,8 +59,9 @@ object camara {
     // Actualiza las posiciones de todos los objetos segun el offset de la camara
     method actualizarPosicionObjetos() {
         fondoJuego.actualizarPorCamara(offsetX)
-        muro.actualizarPorCamara(offsetX)
+        
         fogata.actualizarPorCamara(offsetX)
+        pasto.actualizarPorCamara(offsetX)
         pocionVida.actualizarPorCamara(offsetX)
         matafuegos.actualizarPorCamara(offsetX)
         final.actualizarPorCamara(offsetX)

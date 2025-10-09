@@ -2,6 +2,11 @@ import Personajes.*
 import Obstaculos.*
 import camara.*
 import wollok.game.*
+import herramientas.*
+import pociones.*
+import checkpoints.*
+
+
 
 program AventurasDelAventurero { 
     game.title("Aventureando") // no esta el titulo definido, aún
@@ -15,10 +20,13 @@ program AventurasDelAventurero {
     game.addVisual(fondoJuego) // se implementa al fondo como una imagen no estatica para el side scrolling
     
     game.addVisualCharacter(fin)
-    game.addVisual(muro)
+    
     game.addVisual(pocionVida) 
     game.addVisual(fogata)
-    game.addVisual(matafuegos)
+    fogata.activarIdle()
+    game.addVisual(pasto)
+    pasto.activarIdle()
+    game.addVisual(matafuegos)  
     game.addVisual(final)
     game.addVisual(barraVida)
     

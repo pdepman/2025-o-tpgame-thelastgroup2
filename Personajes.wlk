@@ -1,7 +1,12 @@
 import wollok.vm.*
 import Obstaculos.*  //preguntar al profe, me parece malisimo
 import wollok.game.*
-import camara.*  // Importamos el nuevo archivo de cámara
+import camara.* 
+import herramientas.*
+import pociones.*
+import checkpoints.*
+
+ // Importamos el nuevo archivo de cámara
 object barraVida {
     var position = game.at(1, 45)
     const ancho = 10  // ancho máximo de la barra (puede representar 100 de vida)
