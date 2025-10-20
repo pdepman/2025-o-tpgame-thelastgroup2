@@ -68,6 +68,8 @@ object juegoDungeonGame {
   method devolverLlave() { tieneLlave = false }
 }
 
+
+
 //*==========================| Cuerpo |==========================
   object cuerpo{
 
@@ -108,15 +110,22 @@ object juegoDungeonGame {
 }
 
 //*========================| Protagonista |=======================
+  object configuracionVida{
+    const property vidaMaxima =5
+  }
   class Protagonista{
     
     //Imagen
     var property image = "frente.png"
-
+    //vida
+    var vidas = configuracionVida.vidaMaxima()
     //Posicion
     var property position
+    var inmunidadActivada = false
+    var derrotado = false
 
-    method iniciar(){
+
+    method iniciar(){ 
       game.addVisual(self)
       cuerpo.agregarACuerpo(self)
       image = "frente_respirando.gif"
@@ -135,6 +144,48 @@ object juegoDungeonGame {
 
     //Colision
     method esPisable() = true
+
+  
+    
+    method perderVida (){
+      if(self.puedePerderVida()){
+        vidas = (vidas -1).max(0)
+        
+
+        if(self.estaMuerto()){
+          self.morir()
+        }else{
+          self.activarInmunidad() // temporalmente activa
+        }
+        administradorVidas.vidaCambio(vidas)
+      }
+      
+     
+    }
+     method puedePerderVida() = !inmunidadActivada && !derrotado
+    method estaMuerto() = vidas <= 0
+    method vidas() = vidas  
+    
+    method reiniciarVida() {
+        vidas = configuracionVida.vidaMaxima()
+        derrotado = false
+        inmunidadActivada = false
+        
+        administradorVidas.vidaCambio(vidas)
+    }
+    method vidaInicial() = configuracionVida.vidaMaxima()
+    method activarInmunidad() {
+      inmunidadActivada = true
+      game.schedule(2000, {inmunidadActivada = false})
+    }
+
+    method morir(){
+      derrotado = true
+      self.desaparecer()
+    }
+    
+
+    
 
     //Puede avanzar
     method puedeAvanzar(posicion) = game.getObjectsIn(posicion).all({objeto => objeto.esPisable()})
@@ -168,9 +219,66 @@ object juegoDungeonGame {
       juegoDungeonGame.unDo()
     }
 
+    
+  
+
    method interactuarConPersonaje(pj){}
   }
+  class VidaPersonaje{
+      var property image = "vidaDoradaLlena.png"
+      var property position 
+      const id 
 
+      method iniciar(){
+        game.addVisual(self)
+      }
+
+      method position() = position
+      method id() = id
+
+    // metodos a los que accede el adm de vidas
+
+      method mostrarLlena() {
+        image = "vidaDoradaLlena.png"
+    }
+    
+    method mostrarVacia() {
+        image = "vidaDoradaVacia.png"
+    }
+
+      method esPisable() = true
+      method interactuarConPersonaje(pj){}
+
+
+    }
+    object  administradorVidas {
+      
+      const vida1 = new VidaPersonaje (position = game.at(14, 11), id=1)
+      const vida2 = new VidaPersonaje (position = game.at(16, 11), id=2)
+      const vida3 = new VidaPersonaje (position = game.at(18, 11), id=3)
+      const vida4 = new VidaPersonaje (position = game.at(20, 11), id=4)
+      const vida5 = new VidaPersonaje (position = game.at(22, 11), id=5)
+
+      const vidas = [vida1, vida2, vida3, vida4, vida5]
+
+      method inicializar(){
+        vidas.forEach({vida => vida.iniciar()})
+      }
+      method vidaCambio(vidasRestantes) {
+        vidas.forEach({ vida => 
+            if (vida.id() <= vidasRestantes) {
+                vida.mostrarLlena()
+            } else {
+                vida.mostrarVacia()
+            }
+        })
+    }
+    
+    method reiniciar() {
+        self.vidaCambio(configuracionVida.vidaMaxima())
+    }
+
+    }
 
   //----- HitBox 
   class HitBox{
@@ -464,3 +572,29 @@ class Llave{
     }
   }
   
+  class Fuego {
+    var estadoActual 
+    
+    const property position
+
+    //Imagen
+    var property image = ""
+
+    method iniciar(){
+
+    self.choseImage()
+    game.addVisual(self)
+    }
+
+    method choseImage(){
+    image = "fuego.png"
+    }
+    method esPisable() = true
+
+    method interactuarConPersonaje(pj){
+      pj.perderVida()
+    }
+
+
+
+  }

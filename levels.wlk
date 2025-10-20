@@ -32,6 +32,8 @@ import menuYTeclado.*
       new OnlyVisual(image="Menu.png",position = game.at(0,11)).iniciar()
       new OnlyVisual(image="Undo-Reset.png",position = game.origin()).iniciar()
 
+      administradorVidas.inicializar()
+
       //Dibujo el nivel
       self.drawGridMap()
       self.drawCharacters()
@@ -52,8 +54,8 @@ import menuYTeclado.*
     }
 
     
-    method drawGridMap(){
-      var y = 10
+    method drawGridMap(){ // Se hace un recorrido del mapa por cada fila se 
+      var y = 10           //añade una columna y asi se va creando el mapa 2D
       var x = 2
       initialGridMap.forEach({row =>
         row.forEach({cell => cell.decode(x, y, self)
@@ -105,13 +107,13 @@ import menuYTeclado.*
   }
 
   //Pared
-  object p{
+  
+object p{
     method decode(x,y,_level){
       const pared = new Pared(position = game.at(x, y))
       pared.iniciar()
     }
   }
-
   //Lamparas
   object l{
       method decode(x,y,level){
@@ -149,6 +151,13 @@ import menuYTeclado.*
     method decode(x,y,_level){
       const llave = new Llave(position = game.at(x, y), estadoActual = false)
       llave.iniciar()
+    }
+  }
+  // fuego
+  object f{
+    method decode(x,y,_level){
+      const fuego = new Fuego(position = game.at(x, y), estadoActual  = false)
+      fuego.iniciar()
     }
   }
 
@@ -254,7 +263,7 @@ import menuYTeclado.*
       [v,v,v,v,p,p,p,p,p,p,p,p,g,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,_,_,_,_,p,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,_,m,_,_,p,_,_,_,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
-      [v,v,v,v,l,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
+      [v,v,v,v,l,_,_,_,f,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p],
       [v,v,v,v,p,_,_,_,_,_,_,_,_,_,p,p,p,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
       [v,v,v,v,p,_,k,_,_,_,_,_,_,_,p,v,p,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,p,p,p,s,p,p,p,_,p,p,v,p,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],

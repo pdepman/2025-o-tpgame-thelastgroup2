@@ -35,7 +35,7 @@ import levels.*
 
     method toggle() = if(levelMenuIsOpen) self.close() else self.open()
 
-    method close(){
+    method close(){Phone. Call. Call. 
     image = "CloseMenu.png"
     configTeclado.menuOn()
     levelMenuIsOpen = false
