@@ -35,7 +35,7 @@ import levels.*
 
     method toggle() = if(levelMenuIsOpen) self.close() else self.open()
 
-    method close(){Phone. Call. Call. 
+    method close(){
     image = "CloseMenu.png"
     configTeclado.menuOn()
     levelMenuIsOpen = false
@@ -59,6 +59,8 @@ import levels.*
   }
 
 //*==========================| Config Teclado |==========================
+
+    
   object configTeclado{
 
       var teclado = tecladoJuego
@@ -95,6 +97,8 @@ import levels.*
           keyboard.num8().onPressDo({teclado.num8()})
           keyboard.num9().onPressDo({teclado.num9()})
 
+          // GAME OVER
+          keyboard.e().onPressDo({teclado.e()})
       }
 
       method gameOn(){
@@ -107,6 +111,9 @@ import levels.*
 
       method levelMenuOn(){
         teclado = tecladoSelectorNivel
+      }
+      method gameOverOn(){
+        teclado = tecladoGameOver
       }
     }
 
@@ -132,6 +139,9 @@ import levels.*
     method num7(){}
     method num8(){}
     method num9(){}
+
+    method e(){}
+
   }
 
   object tecladoJuego inherits TecladoBase{
@@ -161,44 +171,85 @@ import levels.*
     }
   }
 
-  class TecladoMenu inherits TecladoBase{
+  
+class TecladoMenu inherits TecladoBase{
     override method p(){
-      juegoDungeonGame.nivelActual().iniciar()
+        administradorVidas.reiniciar()
+        nivel3.iniciar()
     }
 
     override method l(){
-      levelMenu.toggle()
+        console.println("¡TECLA L FUNCIONA!")
+        levelMenu.toggle()
+    }
+}
+
+const tecladoMenu = new TecladoMenu()
+
+
+
+  object tecladoSelectorNivel inherits TecladoMenu{
+      override method num1(){
+        administradorVidas.reiniciar() 
+        nivel1.iniciar()
+    }
+    override method num2(){
+        administradorVidas.reiniciar()  
+        nivel2.iniciar()
+    }
+    override method num3(){
+        administradorVidas.reiniciar()  
+        nivel3.iniciar()
+    }
+    override method num4(){
+        administradorVidas.reiniciar()  
+        nivel4.iniciar()
+    }
+    override method num5(){
+        administradorVidas.reiniciar()  
+        nivel5.iniciar()
+    }
+    override method num6(){
+        administradorVidas.reiniciar()  
+        nivel6.iniciar()
+    }
+    override method num7(){
+        administradorVidas.reiniciar()  
+        nivel7.iniciar()
+    }
+    override method num8(){
+        administradorVidas.reiniciar() 
+        nivel8.iniciar()
+    }
+    override method num9(){
+        administradorVidas.reiniciar()  
+        nivel9.iniciar()
     }
   }
 
-  const tecladoMenu = new TecladoMenu()
-
-  object tecladoSelectorNivel inherits TecladoMenu{
-    override method num1(){
-      nivel1.iniciar()
+  object tecladoGameOver inherits TecladoBase{
+    override method e(){
+      pantallaGameOver.reiniciarJuego()
     }
-    override method num2(){
-      nivel2.iniciar()
+    override method m (){
+      pantallaGameOver.volverAlMenu()
     }
-    override method num3(){
-      nivel3.iniciar()
-    }
-    override method num4(){
-      nivel4.iniciar()
-    }
-    override method num5(){
-      nivel5.iniciar()
-    }
-    override method num6(){
-      nivel6.iniciar()
-    }
-    override method num7(){
-      nivel7.iniciar()
-    }
-    override method num8(){
-      nivel8.iniciar()
-    }
-    override method num9(){
-      nivel9.iniciar()
-    }
+    override method up(){}
+    override method down(){}
+    override method left(){}
+    override method right(){}
+    override method control(){}
+    
+    override method r(){}
+    override method p(){}
+    override method l(){}
+    override method num1(){}
+    override method num2(){}
+    override method num3(){}
+    override method num4(){}
+    override method num5(){}
+    override method num6(){}
+    override method num7(){}
+    override method num8(){}
+    override method num9(){}
   }

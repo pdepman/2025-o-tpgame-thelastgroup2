@@ -6,7 +6,8 @@ object juegoDungeonGame {
 
   var property nivelActual = nivel3
   var movimientos = []
-
+  // nivel por defecto post game over"
+  const nivelPorDefecto = nivel3
   //Config Audio
   const music = game.sound("InideGame.mp3")
   
@@ -66,6 +67,24 @@ object juegoDungeonGame {
   method tieneLlave() = tieneLlave
     // Úsalo sólo en "Nuevo juego"
   method devolverLlave() { tieneLlave = false }
+
+method reiniciarNivel(){
+  tieneLlave = false
+  movimientos.clear()
+  self.clear()
+  administradorVidas.reiniciar()
+  nivelActual = nivelPorDefecto
+  nivelActual.iniciar()
+}
+method volverAlMenuPrincipal(){
+  tieneLlave = false
+  movimientos.clear()
+  self.clear()
+  administradorVidas.reiniciar()
+  nivelActual = nivelPorDefecto
+  menu.iniciar()
+  
+}
 }
 
 
@@ -182,6 +201,15 @@ object juegoDungeonGame {
     method morir(){
       derrotado = true
       self.desaparecer()
+      game.schedule(1000, { pantallaGameOver.mostrar()})
+    }
+
+    method reiniciarCompleto() {
+        vidas = configuracionVida.vidaMaxima()
+        derrotado = false
+        inmunidadActivada = false
+        administradorVidas.vidaCambio(vidas)
+        // El personaje se creará nuevo en el nivel
     }
     
 
@@ -404,6 +432,40 @@ object juegoDungeonGame {
     }
   }
 
+object pantallaGameOver{
+  var property mostrada = false
+
+  method mostrar(){
+    if(!mostrada){
+      game.addVisual(cartelGameOver)
+      configTeclado.gameOverOn()
+      mostrada = true
+    }
+  }
+  method ocultar(){
+    if (mostrada){
+      game.removeVisual(cartelGameOver)
+      mostrada = false
+    }
+  }
+  method reiniciarJuego() {
+        self.ocultar()
+        juegoDungeonGame.reiniciarNivel()
+    }
+    
+    method volverAlMenu() {
+        self.ocultar()
+        juegoDungeonGame.volverAlMenuPrincipal()
+    }
+
+}
+  
+  object cartelGameOver{
+    method position () = game.at(0.25,-1)
+    method image() = "GAMEOVER.png"
+    method esPisable () = true
+    method interactuarConPersonaje(pj) {}
+  }
 
 
   class Pared{
@@ -594,7 +656,4 @@ class Llave{
     method interactuarConPersonaje(pj){
       pj.perderVida()
     }
-
-
-
   }
