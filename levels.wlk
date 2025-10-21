@@ -146,7 +146,7 @@ object p{
     }
   }
 
-  //Trampa
+  //LLave
   object k{
     method decode(x,y,_level){
       const llave = new Llave(position = game.at(x, y), estadoActual = false)

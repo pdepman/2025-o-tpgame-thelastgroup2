@@ -9,20 +9,25 @@ object juegoDungeonGame {
   // nivel por defecto post game over"
   const nivelPorDefecto = nivel3
   //Config Audio
-  const music = game.sound("InideGame.mp3")
-  
+  const music = game.sound("BasicMusic.mp3")
+
   method iniciar(){
 
     //Set game properties
     game.title("Dungeon Game")
 	  game.height(12)
 	  game.width(24)
-    game.boardGround("Fondo.png")
+    game.boardGround("Fondo2.png")
 
     //Set Background Audio
-    music.shouldLoop(true)
-    music.volume(0.3)
-    music.play()
+    if(!tieneLlave){
+      music.shouldLoop(true)
+      music.volume(0.1)
+      music.play()
+    } else {
+      music.stop()
+    }
+
     
 
     //inicializo teclado

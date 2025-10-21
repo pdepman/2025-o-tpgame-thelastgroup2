@@ -14,13 +14,13 @@ import levels.*
     }
     
     method drawMenu(){
-      new OnlyVisual(image = "Logo.png", position = game.at(8,7)).iniciar()
+      new OnlyVisual(image = "Logo.png", position = game.at(5,7)).iniciar()
       levelMenu.iniciar()
     }
   }
 
   object levelMenu{
-    const property position = game.at(7,4)
+    const property position = game.at(4,4)
     var levelMenuIsOpen = false
     var image = "CloseMenu.png"
     
@@ -42,7 +42,7 @@ import levels.*
     }
 
     method open(){
-    image = "OpenMenu.png"
+    image = "CloseMenu.png"
     configTeclado.levelMenuOn()
     levelMenuIsOpen = true
     }
@@ -84,7 +84,7 @@ import levels.*
 
         //* MENU ON:
           keyboard.p().onPressDo({teclado.p()})
-          keyboard.l().onPressDo({teclado.l()})
+          keyboard.c().onPressDo({teclado.c()})
 
         //* LEVEL MENU ON:
           keyboard.num1().onPressDo({teclado.num1()})
@@ -128,7 +128,7 @@ import levels.*
     method m(){}
     method r(){}
     method p(){}
-    method l(){}
+    method c(){}
 
     method num1(){}
     method num2(){}
@@ -178,8 +178,8 @@ class TecladoMenu inherits TecladoBase{
         nivel3.iniciar()
     }
 
-    override method l(){
-        console.println("¡TECLA L FUNCIONA!")
+    override method c(){
+        console.println("¡TECLA C FUNCIONA!")
         levelMenu.toggle()
     }
 }
@@ -242,7 +242,7 @@ const tecladoMenu = new TecladoMenu()
     
     override method r(){}
     override method p(){}
-    override method l(){}
+    override method c(){}
     override method num1(){}
     override method num2(){}
     override method num3(){}
