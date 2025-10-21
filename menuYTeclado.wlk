@@ -234,22 +234,5 @@ const tecladoMenu = new TecladoMenu()
     override method m (){
       pantallaGameOver.volverAlMenu()
     }
-    override method up(){}
-    override method down(){}
-    override method left(){}
-    override method right(){}
-    override method control(){}
-    
-    override method r(){}
-    override method p(){}
-    override method c(){}
-    override method num1(){}
-    override method num2(){}
-    override method num3(){}
-    override method num4(){}
-    override method num5(){}
-    override method num6(){}
-    override method num7(){}
-    override method num8(){}
-    override method num9(){}
+  
   }

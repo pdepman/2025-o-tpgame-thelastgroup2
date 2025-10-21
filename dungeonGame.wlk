@@ -374,8 +374,6 @@ method volverAlMenuPrincipal(){
     }
   }
 
-
-
   class MetaValidadora inherits Meta{
     override method interactuarConPersonaje(pj){
       //Verifica si ha ganado el nivel
@@ -660,5 +658,54 @@ class Llave{
 
     method interactuarConPersonaje(pj){
       pj.perderVida()
+    }
+  }
+
+  class mataFuego inherits Llave{
+    
+  }
+
+  class herramienta {
+    var estadoActual // true = abierta
+
+    //Posicion
+    const property position
+
+    //Imagen
+    var property image = ""
+
+    method iniciar(){
+
+      self.choseImage()
+      game.addVisual(self)
+    }
+
+    method choseImage(){
+      image = if(juegoDungeonGame.tieneLlave()) "Piso1.png" else "Key.png"
+    }
+
+    //Colision
+    method esPisable() = true
+
+    method activar(){
+      image = "Piso1.png"
+      estadoActual = true
+    }
+
+    //Este unDo es para desactivar la trampa --> En el caso de deshacer la eliminacion de un personaje se encarga el Protagonista
+   method unDo(){
+      estadoActual = false
+      self.choseImage()
+
+      //Se ejecuta tambien el movimiento anterior
+      juegoDungeonGame.unDo()
+    }
+
+    method interactuarConPersonaje(pj){
+
+        juegoDungeonGame.tomarLlave()
+        image = "Piso1.png"
+        //Se agrega a movimientos para poder deshacer
+        juegoDungeonGame.addMove(self)
     }
   }
