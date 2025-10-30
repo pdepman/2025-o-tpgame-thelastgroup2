@@ -11,27 +11,19 @@ class Nivel {
   const property nivelEste = null     // →
   const property nivelOeste = null    // ←
   
-   /* Coordenadas en la matriz (opcionales para compatibilidad)
+   // Coordenadas en la matriz 
   const property fila = 0
   const property columna = 0
   
-  // Compatibilidad con sistema anterior
-  // const property siguienteNivel = null
-  // const property anteriorNivel = null
-
-    */ // Goals por dirección
+  // Goals por dirección
   const goalPositionsNorte = []
   const goalPositionsSur = []
   const goalPositionsEste = []
   const goalPositionsOeste = []
-  /*
-  const property siguienteNivel
-  const property anteriorNivel
-  */
   
   
   //Goal
- // const goalPositions = []
+ 
   var property firstGoal = true //Personaje Principal
   var property mainCharacterPosition = null //Protagonistas
   const protagonistaPositions = []
@@ -301,12 +293,12 @@ const nivel1 = new Nivel(
   initialGridMap = [
       [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,n,p,p,p,p,p,n,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
+      [v,v,v,v,p,p,p,p,p,p,p,n,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,_,_,_,_,p,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,_,m,_,_,p,_,_,_,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
       [v,v,v,v,l,_,_,_,f,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,_,_,_,_,_,_,_,_,_,p,p,p,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
-      [v,v,v,v,p,_,k,_,_,_,s,_,_,_,p,v,p,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
+      [v,v,v,v,w,_,_,_,_,_,_,_,_,_,p,p,p,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,_,p,p],
+      [v,v,v,v,p,_,_,_,_,_,_,_,_,_,p,v,p,_,e,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,p,p,p,p,s,p,p,p,_,p,p,v,p,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,v,v,v,v,v,v,v,p,_,_,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,v,v,v,v,v,v,v,p,p,p,p,p,p,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
@@ -318,8 +310,11 @@ const nivel1 = new Nivel(
       [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
       [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v]
     ], 
-  siguienteNivel = nivel2,
-  anteriorNivel = nivel1
+  fila = -1, columna = 1,
+  nivelNorte = nivel2,
+  nivelEste = nivel4,
+  nivelOeste = nivel5,
+  nivelSur = nivel15
 )
 
 //Friend Tutorial
@@ -327,69 +322,80 @@ const nivel2 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [v, v, v, v, p, p, p, p, p, p, p, p, g, p, p, v, v, v, v, v],
+    [v, v, v, v, p, p, p, p, p, p, p, p, n, p, p, v, v, v, v, v],
     [v, v, v, v, p, _, _, _, _, p, _, _, _, _, p, v, v, v, v, v],
     [v, v, v, v, p, _, m, _, _, p, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, a, _, _, _, _, _, _, _, _, _, l, v, v, v, v, v],
+    [v, v, v, v, w, _, _, _, _, _, _, _, _, _, l, v, v, v, v, v],
+    [v, v, v, v, p, _, _, _, _, _, _, _, _, _, e, v, v, v, v, v],
     [v, v, v, v, p, _, _, _, _, _, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, p, _, _, _, _, _, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, v, v, v, v, v],
+    [v, v, v, v, p, p, p, p, s, p, p, p, p, p, p, v, v, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel3,
-  anteriorNivel = nivel1
+  fila = 0, columna = 1,
+  nivelSur = nivel1,
+  nivelEste = nivel3,
+  nivelOeste = nivel6,
+  nivelNorte = nivel8
 )
 
 // Friends Levels
 const nivel3 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [l, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, l, v],
-    [l, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [p, _, m, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [l, p, p, p, p, a, p, p, p, p, p, p, p, p, p, p, p, p, l, v],
+    [l, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p, p, l, v],
+    [l, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, p, v],
+    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
+    [w, _, m, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
+    [p, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p, v],
+    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, e, v],
+    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
+    [l, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p, p, p, l, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel4,
-  anteriorNivel = nivel2
+  fila = 0, columna = 2,
+  nivelOeste = nivel2,
+  nivelSur = nivel4,
+  nivelEste = nivel11,
+  nivelNorte = nivel9
 )
 
 const nivel4 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
+    [v, v, v, p, p, p, p, p, p, p, p, p, p, n, p, p, p, v, v, v],
     [v, p, p, p, _, _, _, _, _, _, _, _, _, _, _, _, p, p, p, v],
     [v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, a, _, _, _, _, _, _, _, p, _, _, _, _, _, _, _, _, p, v],
-    [v, l, _, _, g, _, m, _, _, p, p, p, _, _, _, _, _, _, l, v],
+    [v, w, _, _, _, _, _, _, _, p, _, _, _, _, _, _, _, _, e, v],
+    [v, l, _, _, _, _, m, _, _, p, p, p, _, _, _, _, _, _, l, v],
     [v, p, _, _, _, _, _, _, _, _, p, p, _, _, _, _, _, _, p, v],
     [v, p, _, _, _, _, _, _, _, _, _, p, _, _, _, _, _, _, p, v],
-    [v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, v],
+    [v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p, p, p, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel5,
-  anteriorNivel = nivel3
+  fila = -1, columna = 2,
+  nivelOeste = nivel1,
+  nivelNorte = nivel3,
+  nivelSur = nivel14,
+  nivelEste = nivel12
 )
 
 const nivel5 = new Nivel(
   initialGridMap = [
-    [v, v, v, v, v, v, v, p, p, p, l, p, p, p, v, v, v, v, v, v],
+    [v, v, v, v, v, v, v, p, p, p, l, s, p, p, v, v, v, v, v, v],
     [v, v, v, v, p, p, p, p, _, _, _, _, _, p, p, p, p, v, v, v],
-    [v, v, p, p, p, _, _, _, _, _, _, _, _, _, _, _, p, p, p, v],
+    [v, v, p, p, p, _, _, _, _, _, _, _, _, _, _, _, e, p, p, v],
     [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
     [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
     [v, v, l, _, _, m, _, _, _, p, p, p, p, _, _, _, _, _, l, v],
     [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, v, p, _, _, _, _, _, _, _, _, g, _, _, _, _, _, _, p, v],
-    [v, v, p, p, p, p, a, p, p, p, p, p, p, p, p, p, p, p, p, v],
+    [v, v, p, _, _, _, _, _, _, _, _, n,_, _, _, _, _, _, p, v],
+    [v, v, p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel6,
-  anteriorNivel = nivel4
+  fila = -1, columna = 0,
+  nivelNorte = nivel6,
+  nivelSur = nivel6,
+  nivelEste = nivel1
 )
 
 // Holes Levels
@@ -397,57 +403,171 @@ const nivel6 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
-    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, _, _, p, p, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v],
-    [v, v, v, p, _, m, _, _, _, _, o, _, _, _, _, _, _, p, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v],
-    [v, v, v, p, _, _, _, _, _, g, p, _, _, _, _, _, _, p, v, v],
-    [v, v, v, p, p, _, _, _, _, _, p, _, _, _, _, _, p, p, v, v],
-    [v, v, v, v, p, p, p, a, p, p, p, p, p, p, p, p, p, v, v, v],
+    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, _, _, n, p, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, f, f, _, p, v, v],
+    [v, v, v, p, _, m, _, _, _, _, o, _, _, f, _, _, _, p, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, f, f, _, p, v, v],
+    [v, v, v, p, _, _, _, _, _, _, p, _, _, f, s, f, _, e, v, v],
+    [v, v, v, p, p, _, _, _, _, _, p, _, _, f, f, f, p, p, v, v],
+    [v, v, v, v, p, p, p, p, p, p, p, p, p, n, p, p, p, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel7,
-  anteriorNivel = nivel5
+  fila = 0, columna = 0,
+  nivelEste = nivel2,
+  nivelNorte = nivel7,
+  nivelSur = nivel5
 )
 
 const nivel7 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
+    [v, v, v, p, p, p, p, p, p, p, p, p, p, s, p, p, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, p, p, _, _, _, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, x, _, _, g, _, x, _, _, _, p, v, v, v],
-    [v, v, v, a, _, m, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
+    [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
+    [v, v, v, e, _, m, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, p, p, _, _, _, _, _, p, v, v, v],
     [v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
-  siguienteNivel = nivel8,
-  anteriorNivel = nivel6
+  fila = 1, columna = 0,
+  nivelSur = nivel6,
+  nivelEste = nivel8
 )
 
 const nivel8 = new Nivel(
   initialGridMap = [
-    [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v, v],
-    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, _, p, p, v, v, v],
+    [v, v, v, v, p, p, p, p, p, e, p, p, p, p, p, p, v, v, v, v],
+    [v, v, v, p, p, _, _, _, _, f, _, _, _, _, _, p, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, x, _, x, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, x, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, a, _, _, _, _, x, _, x, _, _, _, _, _, p, v, v, v],
+    [v, v, v, p, _, _, _, _, x, _, f, _, _, _, _, _, p, v, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v],
+    [v, v, v, w, _, _, _, _, f, _, x, _, _, _, _, f, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, m, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, p, _, p, v, v, v],
-    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, p, g, p, v, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, p, s, p, v, v, v],
+    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, p, p, p, v, v, v],
     [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v]
   ],
-  siguienteNivel = nivel9,
-  anteriorNivel = nivel7
+  fila = 1, columna = 1,
+  nivelOeste = nivel7,
+  nivelEste = nivel9,
+  nivelSur = nivel2
 )
 
 const nivel9 = new Nivel(
   initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, o, o, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, o, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, e, p, p, p]
+  ],
+  fila = 1, columna = 2,
+  nivelOeste = nivel8,
+  nivelEste = nivel10,
+  nivelSur = nivel3
+)
+const nivel10 = new Nivel(
+  initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, o, o, _, _, _, _, _, o, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, o, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, o, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, f, p],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _,_, _ ,p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p]
+  ],
+  fila = 1, columna = 3,
+  nivelSur = nivel11,
+  nivelOeste = nivel9
+)
+const nivel11 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, f, _, _, o, f, _, _, _, _, _, o, _, _, _, _, _, p],
+    [p, _, _, f, _, _, _, f, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, f, _, _, _, f, o, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, f, f, f, _, f, f, f, _, _, _, _, _, _, o, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p]
+  ],
+  fila = 0, columna = 3,
+  nivelOeste = nivel3,
+  nivelNorte = nivel10,
+  nivelSur = nivel12
+)
+const nivel12 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, n, p, p, p, p, p, p, p, p, p, p, p],
     [p, _, _, l, _, _, p, p, _, p, _, p, p, _, s, l, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, f, _, _, f, o, _, _, _, _, _, o, _, _, _, _, _, p],
+    [p, _, f, f, _, f, f, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, f, _, f, f, _, f, _, o, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, o, f, _, f, f, _, _, _, _, _, _, _, _, o, _, _, _, p],
+    [p, _, _, f, _, _, f, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, f, f, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
+  ],
+  fila = -1, columna = 3,
+  nivelOeste = nivel4,
+  nivelNorte = nivel11,
+  nivelSur = nivel13
+
+)
+const nivel13 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, _, l, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, o, o, _, f, f, _, _, o, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, o, f, f, _, _, _, _, _, _, _, _, p],
+    [p, _, o, _, _, _, _, _, f, _, _, _, _, _, _, o, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
+  ],
+  fila = -2, columna = 3,
+  nivelOeste = nivel14,
+  nivelNorte = nivel12
+
+)
+const nivel14 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, e, p, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, o, o, p, p, p, p, p, p, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, p, _, _, _, f, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, p, n, f, _, f, _, _, _, p, _, _, p],
+    [p, _, o, _, _, _, _, _, _, p, f, _, _, _, _, p, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, p, p, p, p, p, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
+  ],
+  fila = -2, columna = 2,
+  nivelOeste = nivel15,
+  nivelEste = nivel13,
+  nivelNorte = nivel4
+
+)
+const nivel15 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, n, l, _, _, _, p],
     [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
     [p, _, _, _, _, _, o, o, _, _, _, _, _, o, _, _, _, _, _, p],
     [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
@@ -455,11 +575,38 @@ const nivel9 = new Nivel(
     [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, o, _, _, _, p],
     [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
     [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
-    [p, p, p, p, a, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
+    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, e, p]
   ],
-  siguienteNivel = endCredits,
-  anteriorNivel = nivel8
+  fila = -2, columna = 1,
+  nivelOeste = nivel16,
+  nivelEste = nivel14,
+  nivelNorte = nivel1
+
 )
+const nivel16 = new Nivel(
+  initialGridMap = [
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
+    [p, _, _, l, _, _, p, p, _, _, f, f, f, f, f, f, f, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, _, _, o, o, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, o, _, _, _, _, f, _, _, _, _, _, e],
+    [p, _, o, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, n],
+    [p, _, _, _, _, _, _, _, _, m, _, _, _, f, _, _, _, _, _, p],
+    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
+  ],
+  fila = -2, columna = 0,
+  nivelEste = nivel15,
+  nivelNorte = nivel5
+
+)
+
+
+
+
+
+
 
 object endCredits {
   method iniciar() {
