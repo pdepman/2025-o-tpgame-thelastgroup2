@@ -199,8 +199,8 @@ object f {
     const fuego = new Fuego(position = game.at(x, y), estadoActual = false)
     fuego.inicializar()
   }
-} // NOTA: Los antiguos objetos g, a, s han sido reemplazados por el sistema direccional n, s, e, o
-// Esto elimina redundancia y mantiene un sistema único y expresivo
+} 
+
 
 object u {
   method decode(x, y, _level) {
@@ -235,7 +235,7 @@ object z {
 
 //*==========================| DECODE OBJECTS DIRECCIONALES |==========================
 
-// SISTEMA ÚNICO Y EXPRESIVO  
+// sistema de coordenadas 
 // n = Norte ↑, s = Sur ↓, e = Este →, o = Oeste ←
 
 object n {
