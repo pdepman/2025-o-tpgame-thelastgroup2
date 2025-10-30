@@ -56,6 +56,32 @@ object juegoDungeonGame {
     nivelActual.iniciar()
   }
 
+  // Navegación matricial 4D
+  method irAlNorte(){
+    if(nivelActual.nivelNorte() != null){
+      nivelActual = nivelActual.nivelNorte()
+      nivelActual.iniciar()
+    }
+  }
+  method irAlSur(){
+    if(nivelActual.nivelSur() != null){
+      nivelActual = nivelActual.nivelSur()
+      nivelActual.iniciar()
+    }
+  }
+  method irAlEste(){
+    if(nivelActual.nivelEste() != null){
+      nivelActual = nivelActual.nivelEste()
+      nivelActual.iniciar()
+    }
+  }
+  method irAlOeste(){
+    if(nivelActual.nivelOeste() != null){
+      nivelActual = nivelActual.nivelOeste()
+      nivelActual.iniciar()
+    }
+  }
+
   method addMove(movimiento){
     movimientos = [movimiento] + movimientos
   }
@@ -131,6 +157,12 @@ method volverAlMenuPrincipal(){
 
     // Victoria: delega al nivel como antes
      method victoriaValida() = juegoDungeonGame.nivelActual().cuerpoSobreMeta()
+     
+     // Victoria direccional para sistema matricial
+     method victoriaValidaNorte() = juegoDungeonGame.nivelActual().cuerpoSobreMetaNorte()
+     method victoriaValidaSur() = juegoDungeonGame.nivelActual().cuerpoSobreMetaSur()
+     method victoriaValidaEste() = juegoDungeonGame.nivelActual().cuerpoSobreMetaEste()
+     method victoriaValidaOeste() = juegoDungeonGame.nivelActual().cuerpoSobreMetaOeste()
 }
 
 //*========================| Protagonista |=======================
@@ -435,6 +467,45 @@ method volverAlMenuPrincipal(){
     }
   }
 
+//*======================| PUERTA DIRECCIONAL SIMPLE |======================
+
+class PuertaDireccional inherits Meta {
+  const direccion
+  const esValidadora = false  // Indica si es la primera puerta validadora del nivel
+  
+  override method interactuarConPersonaje(pj){
+    // Solo procesa si es una puerta validadora O si no hay puertas validadoras
+    if (esValidadora) {
+      // Verifica si ha ganado el nivel según la dirección
+      const ganoNivel = self.validarVictoria()
+      
+      if (ganoNivel){
+        // Sonido de Victoria
+        const winSound = game.sound("Victoria.mp3")
+        winSound.volume(0.1)
+        winSound.play()
+        
+        // Navega según la dirección
+        self.navegar()
+      }
+    }
+  }
+  
+  method validarVictoria() = 
+    if (direccion == "norte") cuerpo.victoriaValidaNorte()
+    else if (direccion == "sur") cuerpo.victoriaValidaSur()
+    else if (direccion == "este") cuerpo.victoriaValidaEste()
+    else if (direccion == "oeste") cuerpo.victoriaValidaOeste()
+    else false
+  
+  method navegar() {
+    if (direccion == "norte") juegoDungeonGame.irAlNorte()
+    else if (direccion == "sur") juegoDungeonGame.irAlSur()
+    else if (direccion == "este") juegoDungeonGame.irAlEste()
+    else if (direccion == "oeste") juegoDungeonGame.irAlOeste()
+  }
+}
+
 object pantallaGameOver{
   var property mostrada = false
 
@@ -470,242 +541,159 @@ object pantallaGameOver{
     method interactuarConPersonaje(pj) {}
   }
 
+//*======================| CLASE BASE |======================
 
-  class Pared{
-   
-    //Imagen
-    const images = ["Ladrillo1.png","Ladrillo2.png","Ladrillo3.png","Ladrillo4.png"]
-    var property image = ""
+class ElementoDeEscenario {
+  var property image = ""
+  const property position
 
-    //Posicion
-    const property position
-
-    method iniciar(){
-      self.choseImage()
-      game.addVisual(self)
-    }
-
-    method choseImage(){
-      image = images.randomized().head()
-    }
-
-    //Colision
-    method esPisable() = false
-
-    method interactuarConPersonaje(pj){}
-
-  }
-
-  class Suelo{
-    
-    //Imagen
-    const images = ["Piso1.png","Piso1.png","Piso1.png","Piso1.png","Piso1.png","Piso1.png","Piso1.png","Piso1.png", "Piso2.png", "Piso3.png"]
-    var property image = ""
-
-    //Posicion
-    const property position
-
-    method iniciar(){
-      self.choseImage()
-      game.addVisual(self)
-    }
-
-    method choseImage(){
-      image = images.randomized().head()
-    }
-
-    //Colision
-    method esPisable() = true
-
-    method interactuarConPersonaje(pj){}
-
-  }
-
-  class Lampara{
-    
-    //Posicion
-    const property position
-
-    //Imagen
-    method image() = "Lampara.png"
-
-
-    method iniciar(){
-      game.addVisual(self)
-    } 
-
-    //Colision
-    method esPisable() = true
-
-    method interactuarConPersonaje(pj){}
-  }
-
-  class Agujero{
-    
-    var estadoActual // true = abierta
-
-    //Posicion
-    const property position
-
-    //Imagen
-    const images = ["Trampa2.png","Trampa3.png","Trampa4.png","Trampa5.png"]
-    var property image = ""
-
-    method iniciar(){
-
-      self.choseImage()
-      game.addVisual(self)
-    }
-
-    method choseImage(){
-      image = if(estadoActual) "Trampa1.png" else images.randomized().head()
-    }
-
-    //Colision
-    method esPisable() = true
-
-    method activar(){
-      image = "Trampa1.png"
-      estadoActual = true
-    }
-
-    //Este unDo es para desactivar la trampa --> En el caso de deshacer la eliminacion de un personaje se encarga el Protagonista
-    method unDo(){
-      estadoActual = false
-      self.choseImage()
-
-      //Se ejecuta tambien el movimiento anterior
-      juegoDungeonGame.unDo()
-    }
-
-    method interactuarConPersonaje(personaje){
-      
-      if(estadoActual){
-        personaje.desaparecer()
-      } else {
-        self.activar()
-        //Se agrega a movimientos para poder deshacer
-        juegoDungeonGame.addMove(self)
-      }
-    }
-  }
-
-//Rehusamos la clase de Agujero para la Llave -- Se debe modificar a futuro para evitar repetir codigo
-class Llave{
-    
-    var estadoActual // true = abierta
-
-    //Posicion
-    const property position
-
-    //Imagen
-    var property image = ""
-
-    method iniciar(){
-
-      self.choseImage()
-      game.addVisual(self)
-    }
-
-    method choseImage(){
-      image = if(juegoDungeonGame.tieneLlave()) "Piso1.png" else "Key.png"
-    }
-
-    //Colision
-    method esPisable() = true
-
-    method activar(){
-      image = "Piso1.png"
-      estadoActual = true
-    }
-
-    //Este unDo es para desactivar la trampa --> En el caso de deshacer la eliminacion de un personaje se encarga el Protagonista
-   method unDo(){
-      estadoActual = false
-      self.choseImage()
-
-      //Se ejecuta tambien el movimiento anterior
-      juegoDungeonGame.unDo()
-    }
-
-    method interactuarConPersonaje(pj){
-
-        juegoDungeonGame.tomarLlave()
-        image = "Piso1.png"
-        //Se agrega a movimientos para poder deshacer
-        juegoDungeonGame.addMove(self)
-    }
-  }
-  
-  class Fuego {
-    var estadoActual 
-    
-    const property position
-
-    //Imagen
-    var property image = ""
-
-    method iniciar(){
-
-    self.choseImage()
+  method iniciar() {
+    self.elegirImagen()
     game.addVisual(self)
-    }
-
-    method choseImage(){
-    image = "fuego.png"
-    }
-    method esPisable() = true
-
-    method interactuarConPersonaje(pj){
-      pj.perderVida()
-    }
   }
 
-  class mataFuego inherits Llave{
-    
+  // Para redefinir en subclases si tienen varias opciones de imagen
+  method elegirImagen() {}
+
+  method esPisable() = true
+  method interactuarConPersonaje(pj) {}
+}
+
+
+//*======================| ESCENARIO |======================
+
+class Suelo inherits ElementoDeEscenario {
+  override method elegirImagen() {
+    image = ["Piso1.png", "Piso2.png", "Piso3.png"].randomized().head()
+  }
+}
+
+class Pared inherits ElementoDeEscenario {
+  override method elegirImagen() { 
+   image = ["Ladrillo1.png","Ladrillo2.png","Ladrillo3.png","Ladrillo4.png"].randomized().head() 
+   }
+  override method esPisable() = false
+}
+
+class Lampara inherits ElementoDeEscenario {
+  override method elegirImagen() { 
+  image = "Lampara.png" 
+  }
+  override method esPisable() = false
+}
+
+
+//*======================| OBSTÁCULOS |======================
+
+ 
+class Obstaculo inherits ElementoDeEscenario {
+  var property estadoActual = false
+  var estadoActivo = false
+
+  method inicializar() {
+    estadoActivo = estadoActual
+    self.iniciar()
   }
 
-  class herramienta {
-    var estadoActual // true = abierta
+  override method interactuarConPersonaje(pj) {}
+}
 
-    //Posicion
-    const property position
 
-    //Imagen
-    var property image = ""
+//---- Agujero ----
+class Agujero inherits Obstaculo {
 
-    method iniciar(){
+  const images = ["Trampa2.png", "Trampa3.png", "Trampa4.png", "Trampa5.png"]
 
-      self.choseImage()
-      game.addVisual(self)
-    }
+  override method elegirImagen() {
+    image = if (estadoActivo) "Trampa1.png" else images.randomized().head()
+  }
 
-    method choseImage(){
-      image = if(juegoDungeonGame.tieneLlave()) "Piso1.png" else "Key.png"
-    }
+  override method esPisable() = true
 
-    //Colision
-    method esPisable() = true
+  method activar() {
+    image = "Trampa1.png"
+    estadoActivo = true
+  }
 
-    method activar(){
-      image = "Piso1.png"
-      estadoActual = true
-    }
+  method unDo() {
+    estadoActivo = false
+    self.elegirImagen()
+    juegoDungeonGame.unDo()
+  }
 
-    //Este unDo es para desactivar la trampa --> En el caso de deshacer la eliminacion de un personaje se encarga el Protagonista
-   method unDo(){
-      estadoActual = false
-      self.choseImage()
-
-      //Se ejecuta tambien el movimiento anterior
-      juegoDungeonGame.unDo()
-    }
-
-    method interactuarConPersonaje(pj){
-
-        juegoDungeonGame.tomarLlave()
-        image = "Piso1.png"
-        //Se agrega a movimientos para poder deshacer
-        juegoDungeonGame.addMove(self)
+  override method interactuarConPersonaje(personaje) {
+    if (estadoActivo) {
+      personaje.desaparecer()
+    } else {
+      self.activar()
+      juegoDungeonGame.addMove(self)
     }
   }
+}
+
+
+//---- Fuego ----
+class Fuego inherits Obstaculo {
+
+  override method elegirImagen() { image = "fuego.png" }
+
+  override method esPisable() = true
+
+  override method interactuarConPersonaje(pj) {
+    pj.perderVida()
+  }
+}
+
+
+//=======================| HERRAMIENTAS |=======================
+
+class Herramienta inherits ElementoDeEscenario {
+  var property estadoActual = false
+  var estadoActivo = false
+
+  method inicializar() {
+    estadoActivo = estadoActual
+    self.iniciar()
+  }
+
+  override method esPisable() = true
+
+  method activar() {
+    estadoActivo = true
+    image = "Piso1.png"
+  }
+
+  method unDo() {
+    estadoActivo = false
+    self.elegirImagen()
+    juegoDungeonGame.unDo()
+  }
+}
+
+
+//---- Llave ----
+class Llave inherits Herramienta {
+
+  override method elegirImagen() {
+    image = if (juegoDungeonGame.tieneLlave()) "Piso1.png" else "Key.png"
+  }
+
+  override method interactuarConPersonaje(pj) {
+    juegoDungeonGame.tomarLlave()
+    image = "Piso1.png"
+    juegoDungeonGame.addMove(self)
+  }
+}
+
+//---- MataFuego ----
+class MataFuego inherits Herramienta {
+
+  override method elegirImagen() { image = "Matafuego.png" }
+
+  override method interactuarConPersonaje(pj) {
+    // ejemplo: desactiva fuegos cercanos
+    const apagarSound = game.sound("apagar.mp3")
+    apagarSound.volume(0.1)
+    apagarSound.play()
+  }
+}
