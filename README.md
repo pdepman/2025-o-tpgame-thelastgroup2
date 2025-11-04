@@ -21,6 +21,12 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 ### Controles:
 
 - Completar
+- ![Controles Flechas](<ImageReadme/Flechas PopUp.png>)
+
+  ![ctrl](ImageReadme/Reset.png)
+  
+    R para reiniciar el nivel
+    M para abrir el menú
 
 ## Explicaciones teóricas y diagramas
 
