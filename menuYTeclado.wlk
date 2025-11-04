@@ -115,6 +115,9 @@ import levels.*
       method gameOverOn(){
         teclado = tecladoGameOver
       }
+      method victoriaOn(){
+        teclado = tecladoVictoria
+      }
     }
 
   class TecladoBase{
@@ -235,4 +238,13 @@ const tecladoMenu = new TecladoMenu()
       pantallaGameOver.volverAlMenu()
     }
   
+  }
+
+  object tecladoVictoria inherits TecladoBase{
+    override method e(){
+      pantallaVictoria.verCreditos()
+    }
+    override method m(){
+      pantallaVictoria.volverAlMenu()
+    }
   }

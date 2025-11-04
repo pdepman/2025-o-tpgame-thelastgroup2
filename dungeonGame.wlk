@@ -456,7 +456,7 @@ method volverAlMenuPrincipal(){
         winSound.volume(0.1)
         winSound.play()
 
-        juegoDungeonGame.siguienteNivel()
+        pantallaVictoria.mostrar()
 
       }else{
         juegoDungeonGame.unDo() // Deshace el ultimo movimiento
@@ -540,6 +540,44 @@ object pantallaGameOver{
     method esPisable () = true
     method interactuarConPersonaje(pj) {}
   }
+
+//*======================| PANTALLA VICTORIA |======================
+
+object pantallaVictoria {
+  var property mostrada = false
+
+  method mostrar(){
+    if(!mostrada){
+      game.addVisual(cartelVictoria)
+      configTeclado.victoriaOn()
+      mostrada = true
+    }
+  }
+  
+  method ocultar(){
+    if(mostrada){
+      game.removeVisual(cartelVictoria)
+      mostrada = false
+    }
+  }
+  
+  method volverAlMenu() {
+    self.ocultar()
+    juegoDungeonGame.volverAlMenuPrincipal()
+  }
+  
+  method verCreditos() {
+    self.ocultar()
+    endCredits.iniciar()
+  }
+}
+
+object cartelVictoria {
+  method position() = game.at(6.5, 1.9)
+  method image() = "End.png"
+  method esPisable() = true
+  method interactuarConPersonaje(pj) {}
+}
 
 //*======================| CLASE BASE |======================
 
