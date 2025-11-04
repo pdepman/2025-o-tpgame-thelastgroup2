@@ -33,6 +33,9 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
     R para reiniciar el nivel
     M para abrir el menú
+    E para reiniciar el juego
+    P reinicia las vidas del jugador y te lanza al nivel 3
+    C permite seleccionar niveles
 
 ## Explicaciones teóricas y diagramas
 
