@@ -20,6 +20,7 @@ class Nivel {
   const goalPositionsSur = []
   const goalPositionsEste = []
   const goalPositionsOeste = []
+  const goalPositionsFinal = []  // Puerta dorada final
   
   
   //Goal
@@ -59,6 +60,7 @@ class Nivel {
     goalPositionsSur.clear()
     goalPositionsEste.clear()
     goalPositionsOeste.clear()
+    goalPositionsFinal.clear()
     protagonistaPositions.clear()
     lampPosition.clear()
   }
@@ -93,6 +95,10 @@ class Nivel {
     goalPositionsOeste.add(game.at(x, y))
   }
   
+  method addGoalPositionFinal(x, y) {
+    goalPositionsFinal.add(game.at(x, y))
+  }
+  
   // Métodos de victoria direccionales
   method cuerpoSobreMetaNorte() = (cuerpo.personaje() != null) && goalPositionsNorte.any(
     { goalPos => cuerpo.personaje().position() == goalPos }
@@ -110,12 +116,17 @@ class Nivel {
     { goalPos => cuerpo.personaje().position() == goalPos }
   )
   
+  method cuerpoSobreMetaFinal() = (cuerpo.personaje() != null) && goalPositionsFinal.any(
+    { goalPos => cuerpo.personaje().position() == goalPos }
+  )
+  
   // Método original para compatibilidad (revisa todas las direcciones)
   method cuerpoSobreMeta() = (cuerpo.personaje() != null) && (
     goalPositionsNorte.any({ goalPos => cuerpo.personaje().position() == goalPos }) ||
     goalPositionsSur.any({ goalPos => cuerpo.personaje().position() == goalPos }) ||
     goalPositionsEste.any({ goalPos => cuerpo.personaje().position() == goalPos }) ||
-    goalPositionsOeste.any({ goalPos => cuerpo.personaje().position() == goalPos })
+    goalPositionsOeste.any({ goalPos => cuerpo.personaje().position() == goalPos }) ||
+    goalPositionsFinal.any({ goalPos => cuerpo.personaje().position() == goalPos })
   )
   
   method addProtagonistaPosition(x, y) {
@@ -286,6 +297,17 @@ object w {
   }
 }
 
+// Puerta Dorada Final - requiere llave para ganar
+object d {
+  method decode(x, y, level) {
+    const puertaDorada = new MetaValidadora2(
+      position = game.at(x, y)
+    )
+    puertaDorada.iniciar()
+    level.addGoalPositionFinal(x, y)
+  }
+}
+
 //*==========================| Niveles Instanciados |==========================
 
 //Move Tutorial
@@ -423,7 +445,7 @@ const nivel7 = new Nivel(
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, p, p, p, p, p, p, p, p, p, p, s, p, p, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, p, p, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
+    [v, v, v, d, _, _, k, _, _, x, x, _, _, _, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
     [v, v, v, e, _, m, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
