@@ -25,6 +25,7 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 ## Explicaciones teóricas y diagramas
 
 - Completar Link a .md
+![Descripción de la imagen](assets/mi_imagen.png)
 
 
 
