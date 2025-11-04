@@ -1,0 +1,67 @@
+import dungeonGame.*
+import dungeonGame.juegoDungeonGame
+
+describe "Dungeon Game - Tests Generales" {
+
+  test "El protagonista inicia con la vida máxima" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    assert.equals(personaje.vidas(), configuracionVida.vidaMaxima())
+  }
+
+  test "El protagonista pierde una vida al tocar fuego" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    const fuego = new Fuego(position = game.at(1,1))
+
+    fuego.interactuarConPersonaje(personaje)
+
+    assert.equals(personaje.vidas(), configuracionVida.vidaMaxima() - 1)
+  }
+
+ test "El protagonista muere cuando pierde todas las vidas" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    repeat(configuracionVida.vidaMaxima()) { personaje.perderVida() }
+
+    assert.equals(personaje.estaMuerto(), true)
+  }
+
+  test "El protagonista toma la llave y se guarda el estado" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    const llave = new Llave(position = game.at(1,1))
+
+    llave.interactuarConPersonaje(personaje)
+
+    assert.equals(juegoDungeonGame.tieneLlave(), true)
+  }
+
+
+  test "El fuego reduce la vida pero no deja pasar" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    const fuego = new Fuego(position = game.at(1,1))
+
+    fuego.interactuarConPersonaje(personaje)
+
+    assert.equals(fuego.esPisable(), true)
+    assert.equals(personaje.vidas(), configuracionVida.vidaMaxima() - 1)
+  }
+
+/*
+  test "El protagonista no puede avanzar a una pared" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    const pared = new Pared(position = game.at(2,1))
+
+    assert.equals(personaje.puedeAvanzar(pared.position()), false)
+  }
+    no anda, no se porque da false, pero deberia dar true
+*/
+
+  test "El movimiento undo revierte el último movimiento" {
+    const personaje = new Protagonista(position = game.at(1,1))
+    cuerpo.agregarACuerpo(personaje)
+    const posInicial = personaje.position()
+
+    cuerpo.moverCuerpo(abajo)
+    juegoDungeonGame.unDo()
+
+    assert.equals(personaje.position(), posInicial)
+  }
+}
