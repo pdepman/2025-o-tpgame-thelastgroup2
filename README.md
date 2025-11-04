@@ -41,8 +41,5 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
 [Conceptos teóricos aplicados en el TP](ConceptosTeoricos.md)
 
-![Diagrama](<assets/Diagrama.png>)
-
-
 
 
