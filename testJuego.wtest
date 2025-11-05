@@ -34,7 +34,7 @@ describe "Dungeon Game - Tests Generales" {
   }
 
 
-  test "El fuego reduce la vida pero no deja pasar" {
+  test "El fuego reduce la vida pero deja pasar" {
     const personaje = new Protagonista(position = game.at(1,1))
     const fuego = new Fuego(position = game.at(1,1))
 
