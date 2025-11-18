@@ -1,0 +1,7 @@
+import wollok.game.*
+import dungeonGame.juegoDungeonGame
+
+program AventurasDelAventurero { 
+  juegoDungeonGame.iniciar()
+	game.start()
+}

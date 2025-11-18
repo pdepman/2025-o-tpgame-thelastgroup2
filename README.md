@@ -1,8 +1,14 @@
 UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
+![Dungeon Game logo](assets/Logo.png)
+
 ## Equipo de desarrollo:
 
-- Completar
+- Nina Quempe Juan Jose
+- Fernandez Jose Luis 
+- Romano Jonathan Ricardo
+- Cipra Cristian Jose
+- Rojas Choque Alex Junior
 
 ## Introducción
 
@@ -20,12 +26,20 @@ UTN - Facultad Regional Buenos Aires - Materia Paradigmas de Programación
 
 ### Controles:
 
-- Completar
+
+  ![Controles Flechas](<ImageReadme/Flechas PopUp.png>)
+
+  ![ctrl](ImageReadme/Reset.png)
+
+    R para reiniciar el nivel
+    M para abrir el menú
+    E para reiniciar el juego
+    P reinicia las vidas del jugador y te lanza al nivel 3
+    C permite seleccionar niveles
 
 ## Explicaciones teóricas y diagramas
 
-- Completar Link a .md
-
+[Conceptos teóricos aplicados en el TP](ConceptosTeoricos.md)
 
 
 
