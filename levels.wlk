@@ -310,27 +310,19 @@ object d {
 
 //*==========================| Niveles Instanciados |==========================
 
-//Move Tutorial
+//Move Tutorial - Nivel introductorio (FÁCIL)
 const nivel1 = new Nivel(
   initialGridMap = [
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,p,p,p,p,p,p,n,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,_,_,_,_,p,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,_,m,_,_,p,_,_,_,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p],
-      [v,v,v,v,l,_,_,_,f,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,w,_,_,_,_,_,_,_,_,_,p,p,p,_,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,_,p,p],
-      [v,v,v,v,p,_,_,_,_,_,_,_,_,_,p,v,p,_,e,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,p,p,p,p,s,p,p,p,_,p,p,v,p,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,p,_,_,_,_,_,_,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,p,p,p,p,p,p,p,p,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v],
-      [v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v,v]
+      [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
+      [v, v, v, p, p, p, p, p, p, p, p, n, p, p, p, p, v, v, v, v],
+      [v, v, v, p, _, _, _, f, _, p, _, f, _, _, _, p, v, v, v, v],
+      [v, v, v, p, _, m, _, _, _, p, _, _, _, o, _, p, v, v, v, v],
+      [v, v, v, l, _, _, _, _, _, p, _, _, f, _, _, p, v, v, v, v],
+      [v, v, v, w, _, f, _, p, p, p, _, _, _, _, _, e, v, v, v, v],
+      [v, v, v, p, _, _, _, _, _, _, _, f, _, _, _, p, v, v, v, v],
+      [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v, v],
+      [v, v, v, p, p, p, p, p, s, p, p, p, p, p, p, p, v, v, v, v],
+      [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
     ], 
   fila = -1, columna = 1,
   nivelNorte = nivel2,
@@ -339,18 +331,18 @@ const nivel1 = new Nivel(
   nivelSur = nivel15
 )
 
-//Friend Tutorial
+//Introducción a fogatas - FÁCIL/MEDIA
 const nivel2 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
-    [v, v, v, v, p, p, p, p, p, p, p, p, n, p, p, v, v, v, v, v],
-    [v, v, v, v, p, _, _, _, _, p, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, p, _, m, _, _, p, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, w, _, _, _, _, _, _, _, _, _, l, v, v, v, v, v],
-    [v, v, v, v, p, _, _, _, _, _, _, _, _, _, e, v, v, v, v, v],
-    [v, v, v, v, p, _, _, _, _, _, _, _, _, _, p, v, v, v, v, v],
-    [v, v, v, v, p, p, p, p, s, p, p, p, p, p, p, v, v, v, v, v],
+    [v, v, v, p, p, p, p, p, p, p, p, p, n, p, p, p, v, v, v, v],
+    [v, v, v, p, _, f, _, _, _, p, f, _, _, _, f, p, v, v, v, v],
+    [v, v, v, p, _, m, _, _, _, p, _, _, o, o, _, p, v, v, v, v],
+    [v, v, v, w, _, _, f, _, _, p, _, f, _, _, _, l, v, v, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, e, v, v, v, v],
+    [v, v, v, p, _, _, _, f, _, _, _, f, _, _, _, p, v, v, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v, v],
+    [v, v, v, p, p, p, p, p, s, p, p, p, p, p, p, p, v, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
   fila = 0, columna = 1,
@@ -360,17 +352,17 @@ const nivel2 = new Nivel(
   nivelNorte = nivel8
 )
 
-// Friends Levels
+// Fogatas + Agujeros - MEDIA
 const nivel3 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [l, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p, p, l, v],
-    [l, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
-    [w, _, m, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p, v],
-    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, e, v],
-    [p, _, _, _, _, _, _, _, _, _, f, _, f, _, _, _, _, _, p, v],
+    [l, _, f, _, _, _, f, _, _, _, f, _, _, _, _, _, f, _, p, v],
+    [p, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, _, p, v],
+    [w, _, m, _, _, o, _, f, _, _, _, f, _, _, _, o, _, _, p, v],
+    [p, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, _, p, v],
+    [p, _, f, _, _, o, _, _, _, _, _, _, _, _, _, _, f, _, e, v],
+    [p, _, _, _, _, f, _, _, _, _, _, _, _, _, f, _, _, _, p, v],
     [l, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p, p, p, l, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
@@ -381,16 +373,17 @@ const nivel3 = new Nivel(
   nivelNorte = nivel9
 )
 
+// Pasillos con obstáculos - MEDIA
 const nivel4 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, p, p, p, p, p, p, p, p, p, p, n, p, p, p, v, v, v],
-    [v, p, p, p, _, _, _, _, _, _, _, _, _, _, _, _, p, p, p, v],
-    [v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, w, _, _, _, _, _, _, _, p, _, _, _, _, _, _, _, _, e, v],
-    [v, l, _, _, _, _, m, _, _, p, p, p, _, _, _, _, _, _, l, v],
-    [v, p, _, _, _, _, _, _, _, _, p, p, _, _, _, _, _, _, p, v],
-    [v, p, _, _, _, _, _, _, _, _, _, p, _, _, _, _, _, _, p, v],
+    [v, p, p, p, _, f, _, _, f, _, _, _, _, _, f, _, _, p, p, v],
+    [v, p, _, _, _, _, _, _, _, p, _, f, _, _, _, _, _, _, p, v],
+    [v, w, _, _, _, _, f, _, _, p, _, _, _, _, _, 0, f, _, e, v],
+    [v, l, _, _, _, m, _, _, _, p, p, p, _, o, _, _, _, _, l, v],
+    [v, p, _, f, _, _, _, _, _, _, p, _, _, _, _, f, _, _, p, v],
+    [v, p, _, _, _, _, f, _, o, _, _, _, _, f, _, _, _, _, p, v],
     [v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p, p, p, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
@@ -401,16 +394,17 @@ const nivel4 = new Nivel(
   nivelEste = nivel12
 )
 
+// Laberinto básico - MEDIA
 const nivel5 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, p, p, p, l, s, p, p, v, v, v, v, v, v],
-    [v, v, v, v, p, p, p, p, _, _, _, _, _, p, p, p, p, v, v, v],
-    [v, v, p, p, p, _, _, _, _, _, _, _, _, _, _, _, e, p, p, v],
-    [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, v, l, _, _, m, _, _, _, p, p, p, p, _, _, _, _, _, l, v],
-    [v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v],
-    [v, v, p, _, _, _, _, _, _, _, _, n,_, _, _, _, _, _, p, v],
+    [v, v, v, v, p, p, p, p, _, _, _, f, _, p, p, p, p, v, v, v],
+    [v, v, p, p, p, _, f, _, _, p, _, _, _, f, _, _, e, p, p, v],
+    [v, v, p, _, _, _, _, _, _, p, _, f, _, _, _, _, _, _, p, v],
+    [v, v, p, _, _, _, f, _, _, p, _, _, _, _, f, _, _, _, p, v],
+    [v, v, l, f, _, m, _, _, _, _, f, _, _, _, _, _, _, o, l, v],
+    [v, v, p, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, p, v],
+    [v, v, p, _, _, _, _, _, _, _, f, n, _, _, _, _, _, _, p, v],
     [v, v, p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
@@ -420,17 +414,17 @@ const nivel5 = new Nivel(
   nivelEste = nivel1
 )
 
-// Holes Levels
+// Agujeros + Fogatas - MEDIA/DIFÍCIL
 const nivel6 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
-    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, _, _, n, p, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, f, f, _, p, v, v],
-    [v, v, v, p, _, m, _, _, _, _, o, _, _, f, _, _, _, p, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, f, f, _, p, v, v],
-    [v, v, v, p, _, _, _, _, _, _, p, _, _, f, s, f, _, e, v, v],
-    [v, v, v, p, p, _, _, _, _, _, p, _, _, f, f, f, p, p, v, v],
+    [v, v, v, p, p, _, f, _, _, f, _, _, f, _, _, f, n, p, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v],
+    [v, v, v, p, f, m, _, _, f, _, _, f, _, _, f, _, _, p, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v],
+    [v, v, v, p, _, _, _, f, _, _, p, p, _, f, s, _, _, e, v, v],
+    [v, v, v, p, p, _, _, _, _, _, p, _, _, _, _, _, p, p, v, v],
     [v, v, v, v, p, p, p, p, p, p, p, p, p, n, p, p, p, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
@@ -440,16 +434,17 @@ const nivel6 = new Nivel(
   nivelSur = nivel5
 )
 
+// NIVEL FINAL - Llave y Puerta Dorada - DIFÍCIL
 const nivel7 = new Nivel(
   initialGridMap = [
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v],
     [v, v, v, p, p, p, p, p, p, p, p, p, p, s, p, p, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, p, p, _, _, _, _, _, p, v, v, v],
-    [v, v, v, d, _, _, k, _, _, x, x, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, x, _, _, _, _, x, _, _, _, p, v, v, v],
-    [v, v, v, e, _, m, _, _, _, x, x, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, p, p, _, _, _, _, _, p, v, v, v],
+    [v, v, v, p, f, _, f, _, _, p, p, _, _, f, _, f, p, v, v, v],
+    [v, v, v, d, _, f, _, _, _, x, x, _, f, _, _, _, p, v, v, v],
+    [v, v, v, p, f, _, _, _, _, _, _, _, _, f, _, f, p, v, v, v],
+    [v, v, v, p, _, _, _, x, _, f, _, _, _, _, _, f, p, v, v, v],
+    [v, v, v, e, _, m, _, _, _, x, x, _, _, _, f, _, p, v, v, v],
+    [v, v, v, p, _, _, _, f, _, p, p, _, f, _, _, f, p, v, v, v],
     [v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v],
     [v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v, v]
   ],
@@ -458,17 +453,18 @@ const nivel7 = new Nivel(
   nivelEste = nivel8
 )
 
+// Fogatas estratégicas - DIFÍCIL
 const nivel8 = new Nivel(
   initialGridMap = [
     [v, v, v, v, p, p, p, p, p, e, p, p, p, p, p, p, v, v, v, v],
-    [v, v, v, p, p, _, _, _, _, f, _, _, _, _, _, p, p, v, v, v],
+    [v, v, v, p, p, f, _, f, _, _, f, _, f, _, f, p, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, x, _, f, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, w, _, _, _, _, f, _, x, _, _, _, _, f, p, v, v, v],
+    [v, v, v, p, _, _, _, f, _, _, _, f, _, _, _, _, p, v, v, v],
+    [v, v, v, p, _, _, _, _, _, _, _, _, _, _, f, _, p, v, v, v],
+    [v, v, v, w, _, f, _, _, _, _, _, _, _, f, _, _, p, v, v, v],
     [v, v, v, p, _, _, _, _, _, m, _, _, _, _, _, _, p, v, v, v],
-    [v, v, v, p, _, _, _, _, _, _, _, _, _, f, p, s, p, v, v, v],
-    [v, v, v, p, p, _, _, _, _, _, _, _, _, _, p, p, p, v, v, v],
+    [v, v, v, p, _, _, f, _, _, _, _, _, f, _, p, s, p, v, v, v],
+    [v, v, v, p, p, _, _, _, f, _, _, f, _, _, p, p, p, v, v, v],
     [v, v, v, v, p, p, p, p, p, p, p, p, p, p, p, p, p, v, v, v]
   ],
   fila = 1, columna = 1,
@@ -477,52 +473,54 @@ const nivel8 = new Nivel(
   nivelSur = nivel2
 )
 
+// Arena abierta - DIFÍCIL
 const nivel9 = new Nivel(
   initialGridMap = [
-    [p, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, o, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
-    [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, e, p, p, p]
+    [p, p, p, p, p, p, s, p, p, p, p, p, p, p],
+    [p, _, f, l, _, f, _, _, f, _, p, _, f, p],
+    [p, _, p, _, p, _, _, f, _, _, _, f, _, p],
+    [p, _, _, _, _, f, _, _, _, f, p, _, _, p],
+    [p, f, p, _, _, _, _, _, f, _, _, p, _, p],
+    [p, _, _, f, _, _, _, f, _, _, f, _, _, p],
+    [p, _, _, _, p, _, f, _, _, p, _, _, _, p],
+    [p, _, f, _, _, _, _, m, _, f, _, _, _, p],
+    [p, p, p, p, w, p, p, p, p, p, e, p, p, p]
   ],
   fila = 1, columna = 2,
   nivelOeste = nivel8,
   nivelEste = nivel10,
   nivelSur = nivel3
 )
+// Obstáculos mixtos - DIFÍCIL
 const nivel10 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, _, _, _, _, _, o, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, o, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, o, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, f, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _,_, _ ,p],
+    [p, f, _, l, _, f, p, p, _, p, _, p, p, _, f, l, _, f, _, p],
+    [p, _, _, _, _, _, f, _, _, _, f, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, f, _, _, _, f, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, f, _, _, _, _, f, _, _, _, _, f, _, _, _, p],
+    [p, _, _, f, _, _, _, _, _, f, _, _, _, _, f, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, f, m, f, _, _, _, _, _, f, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, s, p]
   ],
   fila = 1, columna = 3,
   nivelSur = nivel11,
   nivelOeste = nivel9
 )
+// Patrón complejo - DIFÍCIL
 const nivel11 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, f, _, _, o, f, _, _, _, _, _, o, _, _, _, _, _, p],
-    [p, _, _, f, _, _, _, f, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, f, _, _, _, f, o, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, f, f, f, _, f, f, f, _, _, _, _, _, _, o, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, f, _, l, f, _, p, p, f, p, _, p, p, _, f, l, _, f, _, p],
+    [p, _, _, _, _, _, _, f, _, _, f, _, f, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, f, _, _, _, _, _, _, _, _, f, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, f, _, _, _, f, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, f, _, f, _, _, _, _, _, f, _, _, p],
+    [p, _, _, _, _, _, _, f, _, _, _, f, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, f, _, _, _, _, f, _, _, f, _, _, _, _, _, p],
+    [p, _, _, f, _, _, _, _, f, m, f, _, _, _, _, f, _, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, s, p, p, p, p]
   ],
   fila = 0, columna = 3,
@@ -530,17 +528,18 @@ const nivel11 = new Nivel(
   nivelNorte = nivel10,
   nivelSur = nivel12
 )
+// Desafío avanzado - MUY DIFÍCIL
 const nivel12 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, n, p, p, p, p, p, p, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, s, l, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, f, _, _, f, o, _, _, _, _, _, o, _, _, _, _, _, p],
-    [p, _, f, f, _, f, f, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, f, _, f, f, _, f, _, o, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, o, f, _, f, f, _, _, _, _, _, _, _, _, o, _, _, _, p],
-    [p, _, _, f, _, _, f, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, f, f, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, f, _, l, f, _, p, p, _, p, _, p, p, f, s, l, _, f, _, p],
+    [p, _, _, _, _, _, f, _, _, _, f, _, _, _, f, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, f, _, _, f, _, _, _, f, _, _, p],
+    [p, _, _, _, _, _, _, _, f, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, f, _, _, _, _, _, _, f, _, _, f, _, p],
+    [p, _, _, _, _, f, _, _, _, _, f, _, _, f, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, m, _, _, f, _, _, _, f, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
   ],
   fila = -1, columna = 3,
@@ -552,14 +551,14 @@ const nivel12 = new Nivel(
 const nivel13 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, n, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, _, l, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, _, f, f, _, _, o, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, o, f, f, _, _, _, _, _, _, _, _, p],
-    [p, _, o, _, _, _, _, _, f, _, _, _, _, _, _, o, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, f, _, l, f, _, p, p, f, p, _, f, l, _, f, _, _, f, _, p],
+    [p, _, _, _, _, _, f, _, _, _, f, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, f, _, _, _, _, _, f, _, _, _, p],
+    [p, _, f, _, _, _, _, f, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, _, f, _, _, _, _, _, f, _, _, p],
+    [p, _, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, _, f, _, _, _, _, _, f, _, _, p],
+    [p, _, f, _, _, _, f, _, _, m, _, f, _, _, f, _, _, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
   ],
   fila = -2, columna = 3,
@@ -570,14 +569,14 @@ const nivel13 = new Nivel(
 const nivel14 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, e, p, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, _, l, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, p, p, p, p, p, p, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, p, _, _, _, f, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, p, n, f, _, f, _, _, _, p, _, _, p],
-    [p, _, o, _, _, _, _, _, _, p, f, _, _, _, _, p, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, p, p, p, p, p, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, f, _, l, f, _, p, p, f, p, _, p, p, _, f, l, _, f, _, p],
+    [p, _, _, _, _, _, _, f, _, _, f, _, _, f, _, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, p, p, p, p, p, p, _, _, _, _, f, p],
+    [p, _, _, _, _, _, f, _, p, f, _, f, _, _, f, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, p, n, _, _, _, _, _, f, p, _, _, p],
+    [p, _, _, _, _, f, _, _, _, p, f, _, _, f, _, p, _, _, _, p],
+    [p, _, _, _, _, _, _, _, f, _, p, p, p, p, p, _, _, f, _, p],
+    [p, _, _, f, _, _, _, _, _, m, _, _, f, _, _, _, _, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
   ],
   fila = -2, columna = 2,
@@ -589,14 +588,14 @@ const nivel14 = new Nivel(
 const nivel15 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, p, _, p, p, _, n, l, _, _, _, p],
+    [p, _, f, l, _, _, p, p, f, p, _, p, p, f, n, l, _, f, _, p],
     [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, _, _, _, _, _, o, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, o, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, o, _, _, _, _, _, _, _, _, _, _, _, _, o, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, f, _, _, _, f, _, _, _, _, _, _, p],
+    [p, _, _, f, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, p],
+    [p, _, _, _, _, _, f, _, _, _, f, _, _, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, k, _, _, p],
+    [p, _, _, _, _, f, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, _, m, _, _, _, _, _, f, _, _, _, p],
     [p, p, p, p, w, p, p, p, p, p, p, p, p, p, p, p, p, p, e, p]
   ],
   fila = -2, columna = 1,
@@ -608,14 +607,14 @@ const nivel15 = new Nivel(
 const nivel16 = new Nivel(
   initialGridMap = [
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p],
-    [p, _, _, l, _, _, p, p, _, _, f, f, f, f, f, f, f, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
-    [p, _, _, _, _, _, o, o, _, _, _, _, _, f, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, o, _, _, _, _, f, _, _, _, _, _, e],
-    [p, _, o, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, p],
-    [p, _, _, _, _, _, _, _, _, _, _, _, _, f, _, _, _, _, _, n],
-    [p, _, _, _, _, _, _, _, _, m, _, _, _, f, _, _, _, _, _, p],
+    [p, f, _, l, f, _, p, p, f, _, f, _, f, _, f, _, _, f, _, p],
+    [p, _, _, _, _, _, _, f, _, _, _, f, _, _, f, _, _, _, _, p],
+    [p, _, _, _, f, _, _, _, _, f, _, _, _, _, _, _, f, _, _, p],
+    [p, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, _, _, p],
+    [p, _, f, _, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, e],
+    [p, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, _, _, _, p],
+    [p, _, _, _, _, _, _, _, f, _, _, _, _, _, _, f, _, _, _, n],
+    [p, _, _, f, _, _, _, _, f, m, f, _, _, _, _, f, _, _, _, p],
     [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p]
   ],
   fila = -2, columna = 0,

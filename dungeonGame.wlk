@@ -47,6 +47,8 @@ object juegoDungeonGame {
    game.allVisuals().forEach({visual => game.removeVisual(visual)})
  }
 
+
+
   method siguienteNivel(){
     nivelActual = nivelActual.siguienteNivel()
     nivelActual.iniciar()
@@ -670,15 +672,15 @@ class Agujero inherits Obstaculo {
 }
 
 
-//---- Fuego ----
+//---- Fuego (Trampa estática que quita vida) ----
 class Fuego inherits Obstaculo {
 
   override method elegirImagen() { image = "fuego.png" }
 
-  override method esPisable() = true
+  override method esPisable() = true  // Se puede pisar pero daña
 
   override method interactuarConPersonaje(pj) {
-    pj.perderVida()
+    pj.perderVida()  // Quita vida al pisarlo
   }
 }
 
